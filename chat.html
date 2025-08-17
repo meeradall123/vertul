@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertul Chat</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Servers</h2>
+            <ul id="serverList">
+                <li class="server active"># Vertul</li>
+            </ul>
+            <h2>Friends</h2>
+            <ul id="friendsList"></ul>
+            <a href="settings.html" class="settings-btn">Settings</a>
+        </aside>
+
+        <!-- Main Chat -->
+        <main class="chat-main">
+            <header>
+                <h2># general</h2>
+                <button id="logoutBtn">Logout</button>
+            </header>
+            <div id="chatBox" class="chat-box"></div>
+            <div class="chat-input">
+                <input type="text" id="messageInput" placeholder="Type a message...">
+                <button id="sendBtn">Send</button>
+            </div>
+        </main>
+    </div>
+    <script src="js/chat.js"></script>
+</body>
+</html>
