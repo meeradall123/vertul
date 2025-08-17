@@ -1,326 +1,274 @@
-/* ---------- General Reset ---------- */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
-
+/* ================= General ================= */
 body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: #f5f5f7;
     color: #1c1c1e;
+}
+
+.dark-mode {
+    background-color: #18191c;
+    color: #e4e4e6;
+}
+
+/* ================= Header ================= */
+header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    min-height: 100vh;
-    transition: background-color 0.3s, color 0.3s;
+    padding: 15px 30px;
+    background-color: #fff;
+    border-bottom: 1px solid #d1d1d6;
 }
 
-/* ---------- Dark Mode ---------- */
-body.dark-mode {
-    background-color: #1c1c1e;
-    color: #f5f5f7;
-}
-
-/* ---------- Auth Container ---------- */
-.auth-container {
-    background-color: #ffffff;
-    padding: 40px 50px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    width: 350px;
-    text-align: center;
-    transition: background-color 0.3s;
-}
-
-body.dark-mode .auth-container {
-    background-color: #2c2c2e;
-}
-
-.auth-container h1 {
-    margin-bottom: 30px;
+header h1 {
     font-weight: 600;
+    font-size: 22px;
 }
 
-.auth-container input {
-    width: 100%;
-    padding: 12px 15px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    border: 1px solid #d1d1d6;
-    font-size: 16px;
-    transition: border 0.3s, background-color 0.3s;
-}
-
-body.dark-mode .auth-container input {
-    background-color: #3a3a3c;
-    border: 1px solid #48484a;
-    color: #f5f5f7;
-}
-
-.auth-container button {
-    width: 100%;
-    padding: 12px 0;
-    border: none;
-    border-radius: 10px;
+header button {
     background-color: #007aff;
     color: #fff;
-    font-size: 16px;
-    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 15px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-weight: 500;
 }
 
-.auth-container button:hover {
-    background-color: #005ecb;
+header button:hover {
+    background-color: #005bb5;
 }
 
-.auth-container a {
-    color: #007aff;
-    text-decoration: none;
-}
-
-/* ---------- Chat Page ---------- */
-.chat-container {
+/* ================= Main Layout ================= */
+.main-container {
     display: flex;
-    width: 90%;
-    max-width: 1200px;
-    height: 90vh;
-    background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    overflow: hidden;
-    transition: background-color 0.3s;
+    height: calc(100vh - 60px);
 }
 
-body.dark-mode .chat-container {
-    background-color: #2c2c2e;
-}
-
-/* Sidebar */
+/* ================= Sidebar / Friends ================= */
 .sidebar {
     width: 250px;
     background-color: #f2f2f7;
-    padding: 20px;
     border-right: 1px solid #d1d1d6;
-    transition: background-color 0.3s;
+    padding: 15px;
+    overflow-y: auto;
 }
 
-body.dark-mode .sidebar {
+.dark-mode .sidebar {
     background-color: #1c1c1e;
-    border-right: 1px solid #48484a;
+    border-color: #2c2c2e;
 }
 
 .sidebar h2 {
-    margin-bottom: 20px;
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
 }
 
 .sidebar ul {
     list-style: none;
+    padding: 0;
 }
 
-.sidebar ul li {
-    margin-bottom: 15px;
+.sidebar li {
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.sidebar ul li button {
-    padding: 5px 10px;
-    font-size: 12px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.sidebar li:hover {
+    background-color: #e5e5ea;
 }
 
-.sidebar ul li button:hover {
-    background-color: #d1d1d6;
+.dark-mode .sidebar li:hover {
+    background-color: #2c2c2e;
 }
 
-body.dark-mode .sidebar ul li button:hover {
-    background-color: #48484a;
-}
-
-/* Chat Main */
+/* ================= Chat Area ================= */
 .chat-main {
     flex: 1;
     display: flex;
     flex-direction: column;
+    background-color: #fff;
 }
 
-.chat-box {
+.dark-mode .chat-main {
+    background-color: #242426;
+}
+
+#chatBox {
     flex: 1;
-    padding: 20px;
+    padding: 15px;
     overflow-y: auto;
 }
 
 .message {
-    display: flex;
-    margin-bottom: 15px;
-    align-items: flex-end;
+    margin-bottom: 12px;
+    line-height: 1.4;
 }
 
-.message.self {
-    flex-direction: row-reverse;
+.message b {
+    margin-right: 5px;
 }
 
-.avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #007aff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    font-weight: bold;
-    margin-right: 10px;
+.message .avatar {
+    font-weight: 700;
+    margin-right: 6px;
 }
 
-.message.self .avatar {
-    margin-left: 10px;
-    margin-right: 0;
+.add-reaction span {
+    cursor: pointer;
+    margin-left: 5px;
 }
 
-.content {
-    background-color: #e5e5ea;
-    padding: 10px 15px;
-    border-radius: 15px;
-    max-width: 70%;
-    position: relative;
-    transition: background-color 0.3s;
+/* ================= Typing Indicator ================= */
+#typingIndicator {
+    padding: 5px 15px;
+    font-style: italic;
+    color: gray;
 }
 
-body.dark-mode .content {
-    background-color: #3a3a3c;
-}
-
-.timestamp {
-    font-size: 10px;
-    color: #8e8e93;
-    position: absolute;
-    bottom: -15px;
-    right: 10px;
-}
-
-/* Chat Input */
+/* ================= Chat Input ================= */
 .chat-input {
     display: flex;
-    padding: 15px;
+    padding: 10px 15px;
     border-top: 1px solid #d1d1d6;
-    background-color: #f5f5f7;
-    transition: background-color 0.3s;
+    background-color: #f2f2f7;
 }
 
-body.dark-mode .chat-input {
+.dark-mode .chat-input {
     background-color: #1c1c1e;
-    border-top: 1px solid #48484a;
+    border-color: #2c2c2e;
 }
 
 .chat-input input {
     flex: 1;
-    padding: 12px 15px;
+    padding: 10px 15px;
     border-radius: 20px;
-    border: 1px solid #d1d1d6;
-    font-size: 14px;
-    margin-right: 10px;
+    border: 1px solid #c7c7cc;
+    outline: none;
+    font-size: 15px;
 }
 
-body.dark-mode .chat-input input {
-    background-color: #3a3a3c;
-    border: 1px solid #48484a;
-    color: #f5f5f7;
+.dark-mode .chat-input input {
+    border-color: #3a3a3c;
+    background-color: #2c2c2e;
+    color: #fff;
 }
 
 .chat-input button {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 20px;
+    margin-left: 10px;
     background-color: #007aff;
     color: #fff;
-    font-weight: 600;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-weight: 500;
 }
 
 .chat-input button:hover {
-    background-color: #005ecb;
+    background-color: #005bb5;
 }
 
-/* Settings Page */
+/* ================= Settings Page ================= */
 .settings-container {
-    width: 400px;
-    background-color: #ffffff;
-    padding: 30px 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transition: background-color 0.3s;
-}
-
-body.dark-mode .settings-container {
-    background-color: #2c2c2e;
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
 }
 
 .settings-container h2 {
-    margin-bottom: 20px;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.settings-container label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 500;
 }
 
 .settings-container input {
     width: 100%;
-    padding: 12px 15px;
-    border-radius: 10px;
-    border: 1px solid #d1d1d6;
-    margin-bottom: 15px;
-    font-size: 14px;
-    transition: border 0.3s, background-color 0.3s;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #c7c7cc;
+    font-size: 15px;
 }
 
-body.dark-mode .settings-container input {
-    background-color: #3a3a3c;
-    border: 1px solid #48484a;
-    color: #f5f5f7;
+.dark-mode .settings-container input {
+    border-color: #3a3a3c;
+    background-color: #2c2c2e;
+    color: #fff;
 }
 
 .settings-container button {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 15px;
+    margin-top: 20px;
     background-color: #007aff;
     color: #fff;
-    font-weight: 600;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
-    margin-bottom: 10px;
 }
 
 .settings-container button:hover {
-    background-color: #005ecb;
+    background-color: #005bb5;
 }
 
-.settings-container ul {
-    list-style: none;
-    margin-top: 20px;
-}
-
-.settings-container ul li {
+/* ================= Landing Page / Login Signup ================= */
+.landing {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    padding: 10px 15px;
-    border-radius: 15px;
-    background-color: #f2f2f7;
-    transition: background-color 0.3s;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
-body.dark-mode .settings-container ul li {
-    background-color: #3a3a3c;
+.landing h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 40px;
 }
 
-.settings-container ul li button {
-    padding: 5px 10px;
-    font-size: 12px;
+.landing button {
+    margin: 10px;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 500;
     border-radius: 10px;
+    border: none;
     cursor: pointer;
+    background-color: #007aff;
+    color: #fff;
+}
+
+.landing button:hover {
+    background-color: #005bb5;
+}
+
+/* ================= Scrollbar Styling ================= */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c7c7cc;
+    border-radius: 10px;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+    background: #3a3a3c;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
 }
