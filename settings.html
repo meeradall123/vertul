@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertul Settings</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+</head>
+<body>
+    <div class="settings-container">
+        <h1>Settings</h1>
+
+        <!-- Appearance -->
+        <section>
+            <h2>Appearance</h2>
+            <button id="darkModeBtn">Toggle Dark Mode</button>
+        </section>
+
+        <!-- Password -->
+        <section>
+            <h2>Password</h2>
+            <input type="password" id="newPassword" placeholder="New Password">
+            <button id="changePasswordBtn">Change Password</button>
+        </section>
+
+        <!-- Friends Management -->
+        <section>
+            <h2>Friends</h2>
+            <input type="email" id="friendEmail" placeholder="Add Friend by Email">
+            <button id="addFriendBtn">Add Friend</button>
+            <ul id="friendsListSettings"></ul>
+        </section>
+
+        <button id="logoutBtn">Logout</button>
+    </div>
+    <script src="js/settings.js"></script>
+</body>
+</html>
