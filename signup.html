@@ -2,46 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Vertul - Sign Up</title>
+    <title>Vertul - Settings</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
 </head>
 <body>
-    <div class="auth-container">
-        <h1>Sign Up</h1>
-        <input type="text" id="username" placeholder="Username">
-        <input type="email" id="email" placeholder="Email">
-        <input type="password" id="password" placeholder="Password">
-        <input type="text" id="avatar" placeholder="Avatar Initial or Emoji">
-        <button id="signupBtn">Sign Up</button>
-        <p>Already have an account? <a href="login.html">Log In</a></p>
+    <div class="settings-container">
+        <h2>Settings</h2>
+        <input type="text" id="newUsername" placeholder="Change Username">
+        <input type="text" id="newAvatar" placeholder="Change Avatar Initial/Emoji">
+        <button id="updateProfileBtn">Update Profile</button>
+        <input type="password" id="newPassword" placeholder="Change Password">
+        <button id="changePasswordBtn">Change Password</button>
+        <button id="darkModeBtn">Toggle Dark Mode</button>
+        <h3>Friends</h3>
+        <input type="text" id="friendEmail" placeholder="Add Friend by Email">
+        <button id="addFriendBtn">Add Friend</button>
+        <ul id="friendsListSettings"></ul>
+        <button id="logoutBtn">Logout</button>
     </div>
 
+    <script src="js/settings.js"></script>
     <script>
-        // Firebase config
-        const firebaseConfig = { /* YOUR FIREBASE CONFIG HERE */ };
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const db = firebase.database();
+        // Profile update
+        const updateBtn = document.getElementById("updateProfileBtn");
+        updateBtn.addEventListener("click", () => {
+            const username = document.getElementById("newUsername").value.trim();
+            const avatar = document.getElementById("newAvatar").value.trim();
+            const uid = firebase.auth().currentUser.uid;
 
-        document.getElementById("signupBtn").addEventListener("click", () => {
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-            const username = document.getElementById("username").value;
-            const avatar = document.getElementById("avatar").value || username[0].toUpperCase();
+            const updates = {};
+            if(username) updates.username = username;
+            if(avatar) updates.avatar = avatar;
 
-            auth.createUserWithEmailAndPassword(email, password)
-                .then(res => {
-                    const uid = res.user.uid;
-                    db.ref("users/" + uid).set({
-                        email,
-                        username,
-                        avatar
-                    });
-                    window.location.href = "chat.html";
-                })
+            firebase.database().ref("users/" + uid).update(updates)
+                .then(() => alert("Profile updated!"))
                 .catch(err => alert(err.message));
         });
     </script>
